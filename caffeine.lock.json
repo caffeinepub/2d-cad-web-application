@@ -1,0 +1,9 @@
+{
+  "templates": {
+    "declaration_generator": "blob-10",
+    "build_template": "1.0.0"
+  },
+  "components": {
+    "blob-storage": "v2.0.1"
+  }
+}
