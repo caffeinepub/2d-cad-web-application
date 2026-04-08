@@ -1,0 +1,216 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type UnitSystem = 
+ variant {
+   centimeters;
+   inches;
+   pixels;
+ };
+type Time = int;
+type Rectangle = 
+ record {
+   height: float64;
+   topLeft: Point;
+   width: float64;
+ };
+type ProjectPublic = 
+ record {
+   activeLayer: nat;
+   created: Time;
+   id: text;
+   layers: vec record {
+                 nat;
+                 Layer;
+               };
+   modified: Time;
+   name: text;
+   objects: vec DrawingObject;
+   unitSystem: UnitSystem;
+ };
+type Polyline = record {points: vec Point;};
+type Point = 
+ record {
+   x: float64;
+   y: float64;
+ };
+type Octagon = 
+ record {
+   center: Point;
+   size: float64;
+ };
+type Line = 
+ record {
+   end: Point;
+   start: Point;
+ };
+type Layer = 
+ record {
+   color: Color;
+   id: nat;
+   name: text;
+   visible: bool;
+ };
+type Ellipse = 
+ record {
+   center: Point;
+   radiusX: float64;
+   radiusY: float64;
+ };
+type DrawingObject = 
+ variant {
+   arc: record {
+          arc: Arc;
+          color: Color;
+          layer: nat;
+          rotation: float64;
+        };
+   circle:
+    record {
+      circle: Circle;
+      color: Color;
+      fill: Color;
+      layer: nat;
+      rotation: float64;
+    };
+   ellipse:
+    record {
+      color: Color;
+      ellipse: Ellipse;
+      fill: Color;
+      layer: nat;
+      rotation: float64;
+    };
+   filledCircle:
+    record {
+      circle: Circle;
+      color: Color;
+      fill: Color;
+      layer: nat;
+      rotation: float64;
+    };
+   filledRectangle:
+    record {
+      color: Color;
+      fill: Color;
+      layer: nat;
+      rectangle: Rectangle;
+      rotation: float64;
+    };
+   line: record {
+           color: Color;
+           layer: nat;
+           line: Line;
+           rotation: float64;
+         };
+   octagon:
+    record {
+      color: Color;
+      fill: Color;
+      layer: nat;
+      octagon: Octagon;
+      rotation: float64;
+    };
+   polyline:
+    record {
+      color: Color;
+      layer: nat;
+      polyline: Polyline;
+      rotation: float64;
+    };
+   rectangle:
+    record {
+      color: Color;
+      fill: Color;
+      layer: nat;
+      rectangle: Rectangle;
+      rotation: float64;
+    };
+ };
+type Color = 
+ variant {
+   blue;
+   green;
+   none;
+   red;
+   white;
+   yellow;
+ };
+type Circle = 
+ record {
+   center: Point;
+   radius: float64;
+ };
+type Arc = 
+ record {
+   center: Point;
+   endAngle: float64;
+   radius: float64;
+   startAngle: float64;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  addLayer: (projectId: text, layerId: nat, name: text, color: Color) ->
+   (bool);
+  clearAllProjects: () -> ();
+  convertToFilledShape: (projectId: text, objectIndex: nat) -> (bool);
+  createCircle: (center: Point, radius: float64, color: Color, rotation:
+   float64, layer: nat) -> (DrawingObject);
+  createRectangle: (topLeft: Point, width: float64, height: float64, color:
+   Color, rotation: float64, layer: nat) -> (DrawingObject);
+  deleteProject: (id: text) -> ();
+  duplicateProject: (id: text, newId: text, newName: text) -> (bool);
+  editLine: (projectId: text, objectIndex: nat, newLine: Line) -> (bool);
+  getAllProjectIds: () -> (vec text) query;
+  getLayers: (projectId: text) -> (opt vec Layer) query;
+  getProjectByName: (name: text) -> (opt ProjectPublic) query;
+  getProjectCount: () -> (nat) query;
+  getProjectMetadata: (id: text) ->
+   (opt
+     record {
+       created: Time;
+       modified: Time;
+       name: text;
+       unitSystem: UnitSystem;
+     }) query;
+  listProjects: () -> (vec ProjectPublic) query;
+  loadProject: (id: text) -> (opt ProjectPublic) query;
+  rotateObject: (projectId: text, objectIndex: nat, rotation: float64) ->
+   (bool);
+  saveProject: (id: text, name: text, objects: vec DrawingObject, layers:
+   vec record {
+         nat;
+         Layer;
+       }, activeLayer: nat, unitSystem: UnitSystem) -> ();
+  searchProjectsByName: (searchTerm: text) -> (vec ProjectPublic) query;
+  setActiveLayer: (projectId: text, layerId: nat) -> (bool);
+  setFillColor: (projectId: text, objectIndex: nat, fillColor: Color) ->
+   (bool);
+  setLayerVisibility: (projectId: text, layerId: nat, visible: bool) ->
+   (bool);
+  setUnitSystem: (projectId: text, unitSystem: UnitSystem) -> (bool);
+  snapToIntersection: (projectId: text, point: Point) -> (opt Point);
+  updateProject: (id: text, objects: vec DrawingObject, layers:
+   vec record {
+         nat;
+         Layer;
+       }, activeLayer: nat, unitSystem: UnitSystem) -> (bool);
+}

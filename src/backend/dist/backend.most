@@ -1,0 +1,243 @@
+// Version: 3.0.0
+type Arc__673174195 =
+  {
+    center : Point__370461279;
+    endAngle : Float;
+    radius : Float;
+    startAngle : Float
+  };
+type Arc__788189278 =
+  {
+    center : Point__38268162;
+    endAngle : Float;
+    radius : Float;
+    startAngle : Float
+  };
+type Circle__478408147 = {center : Point__38268162; radius : Float};
+type Circle__854339342 = {center : Point__370461279; radius : Float};
+type Color__253058631 = {#blue; #green; #none; #red; #white; #yellow};
+type Color__77327923 = {#blue; #green; #none; #red; #white; #yellow};
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type DrawingObject__18372466 =
+  {
+    #arc :
+      {
+        arc : Arc__673174195;
+        color : Color__77327923;
+        layer : Nat;
+        rotation : Float
+      };
+    #circle :
+      {
+        circle : Circle__854339342;
+        color : Color__77327923;
+        fill : Color__77327923;
+        layer : Nat;
+        rotation : Float
+      };
+    #ellipse :
+      {
+        color : Color__77327923;
+        ellipse : Ellipse__546748144;
+        fill : Color__77327923;
+        layer : Nat;
+        rotation : Float
+      };
+    #filledCircle :
+      {
+        circle : Circle__854339342;
+        color : Color__77327923;
+        fill : Color__77327923;
+        layer : Nat;
+        rotation : Float
+      };
+    #filledRectangle :
+      {
+        color : Color__77327923;
+        fill : Color__77327923;
+        layer : Nat;
+        rectangle : Rectangle__468640838;
+        rotation : Float
+      };
+    #line :
+      {
+        color : Color__77327923;
+        layer : Nat;
+        line : Line__840181621;
+        rotation : Float
+      };
+    #octagon :
+      {
+        color : Color__77327923;
+        fill : Color__77327923;
+        layer : Nat;
+        octagon : Octagon__94137434;
+        rotation : Float
+      };
+    #polyline :
+      {
+        color : Color__77327923;
+        layer : Nat;
+        polyline : Polyline__886859892;
+        rotation : Float
+      };
+    #rectangle :
+      {
+        color : Color__77327923;
+        fill : Color__77327923;
+        layer : Nat;
+        rectangle : Rectangle__468640838;
+        rotation : Float
+      }
+  };
+type DrawingObject__812296365 =
+  {
+    #arc :
+      {
+        arc : Arc__788189278;
+        color : Color__253058631;
+        layer : Nat;
+        rotation : Float
+      };
+    #circle :
+      {
+        circle : Circle__478408147;
+        color : Color__253058631;
+        fill : Color__253058631;
+        layer : Nat;
+        rotation : Float
+      };
+    #ellipse :
+      {
+        color : Color__253058631;
+        ellipse : Ellipse__750157859;
+        fill : Color__253058631;
+        layer : Nat;
+        rotation : Float
+      };
+    #filledCircle :
+      {
+        circle : Circle__478408147;
+        color : Color__253058631;
+        fill : Color__253058631;
+        layer : Nat;
+        rotation : Float
+      };
+    #filledRectangle :
+      {
+        color : Color__253058631;
+        fill : Color__253058631;
+        layer : Nat;
+        rectangle : Rectangle__52325325;
+        rotation : Float
+      };
+    #line :
+      {
+        color : Color__253058631;
+        layer : Nat;
+        line : Line__724840875;
+        rotation : Float
+      };
+    #octagon :
+      {
+        color : Color__253058631;
+        fill : Color__253058631;
+        layer : Nat;
+        octagon : Octagon__221282707;
+        rotation : Float
+      };
+    #polyline :
+      {
+        color : Color__253058631;
+        layer : Nat;
+        polyline : Polyline__850727338;
+        rotation : Float
+      };
+    #rectangle :
+      {
+        color : Color__253058631;
+        fill : Color__253058631;
+        layer : Nat;
+        rectangle : Rectangle__52325325;
+        rotation : Float
+      }
+  };
+type Ellipse__546748144 =
+  {center : Point__370461279; radiusX : Float; radiusY : Float};
+type Ellipse__750157859 =
+  {center : Point__38268162; radiusX : Float; radiusY : Float};
+type Int__270357528 = Int__616954475;
+type Int__616954475 = Int;
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Layer__1060772400 =
+  {color : Color__77327923; id : Nat; name : Text; visible : Bool};
+type Layer__682990044 =
+  {color : Color__253058631; id : Nat; name : Text; visible : Bool};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Line__724840875 = {end : Point__38268162; start : Point__38268162};
+type Line__840181621 = {end : Point__370461279; start : Point__370461279};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__334413012<K, V> = {root : Tree__4145630<K, V>; size : Nat};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Octagon__221282707 = {center : Point__38268162; size : Float};
+type Octagon__94137434 = {center : Point__370461279; size : Float};
+type OldProject__561176146 =
+  {
+    activeLayer : Nat;
+    created : Int;
+    id : Text;
+    layers : Map__334413012<Nat, Layer__682990044>;
+    modified : Int;
+    name : Text;
+    objects : [DrawingObject__812296365];
+    unitSystem : UnitSystem__968467502
+  };
+type Point__370461279 = {x : Float; y : Float};
+type Point__38268162 = {x : Float; y : Float};
+type Polyline__850727338 = {points : [Point__38268162]};
+type Polyline__886859892 = {points : [Point__370461279]};
+type Project__762223144 =
+  {
+    activeLayer : Nat;
+    created : Time__900049286;
+    id : Text;
+    layers : Map__605269027<Nat, Layer__1060772400>;
+    modified : Time__900049286;
+    name : Text;
+    objects : [DrawingObject__18372466];
+    unitSystem : UnitSystem__686163477
+  };
+type Rectangle__468640838 =
+  {height : Float; topLeft : Point__370461279; width : Float};
+type Rectangle__52325325 =
+  {height : Float; topLeft : Point__38268162; width : Float};
+type StorageState__865391286 =
+  {var authorizedPrincipals : [Principal]; var blobTodeletete : [Blob]};
+type Time__796480547 = Int__270357528;
+type Time__900049286 = Time__796480547;
+type Tree__4145630<K, V> =
+  {
+    #black : (Tree__4145630<K, V>, K, V, Tree__4145630<K, V>);
+    #leaf;
+    #red : (Tree__4145630<K, V>, K, V, Tree__4145630<K, V>)
+  };
+type UnitSystem__686163477 = {#centimeters; #inches; #pixels};
+type UnitSystem__968467502 = {#centimeters; #inches; #pixels};
+actor ({
+  in var projects : Map__334413012<Text, OldProject__561176146>;
+  in storage : StorageState__865391286
+}, {
+  stable projects :
+    {
+      var root : Node__46230540<Text, Project__762223144>;
+      var size : Nat__490723111
+    }
+}) ;

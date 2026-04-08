@@ -1,0 +1,32 @@
+{
+  "overview": "A feature-rich 2D CAD web application with precision drawing tools, layer management, snapping, measurement, and enhanced file import/export supporting DXF, SVG, DWG, and PDF formats.",
+  "features": [
+    "2D drawing tools (line, rectangle, circle, arc, polyline, ellipse, octagon)",
+    "Layer management with visibility and color control",
+    "DWG file import with automatic layer creation matching source file",
+    "DWG file export with exact color preservation",
+    "PDF import as traceable background image",
+    "PDF export via jsPDF",
+    "DXF import with layer and color extraction",
+    "SVG import and export",
+    "Precision snapping (endpoints, centers, intersections)",
+    "Measurement tool with unit support (pixels, inches, cm)",
+    "Object properties panel (position, size, rotation, color, fill)",
+    "Undo/redo history",
+    "Project save/load"
+  ],
+  "category": "productivity",
+  "tags": [
+    "cad",
+    "drawing",
+    "2d",
+    "dwg",
+    "pdf",
+    "dxf",
+    "svg",
+    "file-import",
+    "file-export",
+    "layers"
+  ],
+  "last_updated": "2026-04-07T23:35:51.932Z"
+}
